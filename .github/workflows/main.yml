@@ -1,1 +1,40 @@
+name: CI/CD Pipeline
 
+# Run this workflow when code is pushed to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # virtual Linux machine provided by GitHub
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3   # brings your repo code into the workflow
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: echo "No tests yet"
+
+      - name: Build Docker image
+        run: docker build -t nik1611/nodejs-demo-app .
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push Docker image
+        run: |
+          docker tag nik1611/nodejs-demo-app:latest nik1611/nodejs-demo-app:latest
+          docker push nik1611/nodejs-demo-app:latest
