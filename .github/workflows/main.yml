@@ -36,5 +36,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker tag nik1611/nodejs-demo-app:latest nik1611/nodejs-demo-app:latest
+          docker tag nodejs-demo-app:latest nik1611/nodejs-demo-app:latest
           docker push nik1611/nodejs-demo-app:latest
