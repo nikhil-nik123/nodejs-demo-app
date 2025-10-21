@@ -26,7 +26,7 @@ jobs:
         run: echo "No tests yet"
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.nik1611 }}/ nodejs-demo-app:latest 
+        run: docker build -t ${{ secrets.nik1611 }}/nodejs-demo-app:latest 
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
@@ -36,4 +36,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.nik1611 }}/ nodejs-demo-app:latest 
+          docker push ${{ secrets.nik1611 }}/nodejs-demo-app:latest 
