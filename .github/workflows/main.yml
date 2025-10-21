@@ -36,4 +36,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push your nik1611/nodejs-demo-app:latest 
+          docker push ${{ secrets.DOCKER_USERNAME }}/ nodejs-demo-app:latest 
